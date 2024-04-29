@@ -2,10 +2,11 @@
 import { Flight } from "./Flight";
 
 export class Airport{
-    constructor(private name:string,private code:string,private address:Address,private flights:Flight[]){
+    // private address:Address;
+    constructor(private name:string,private code:string,private flights:Flight[]){
         this.name = name;
         this.code = code;
-        this.address = address;
+        // this.address = address;
         this.flights=[];
     }
     getName(){

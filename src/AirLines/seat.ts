@@ -1,5 +1,5 @@
 export class Seat{
-    constructor(private seatNumber: string, private classSeat:ClassSeat){
+    constructor(private seatNumber: string){
         this.seatNumber = seatNumber;
     }
     getSeatNumber(){
