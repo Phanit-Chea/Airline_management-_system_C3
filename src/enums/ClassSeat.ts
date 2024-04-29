@@ -4,6 +4,6 @@ export enum ClassSeat {
      ACCESSIBLE = "Accessible",
      EMERGENCYEXIT = "EmergencyExit",
      BUSSINESS = "Bussiness",
-     FIRSTCLASS = " FirstClass",
+     FIRSTCLASS = "FirstClass",
   
 }

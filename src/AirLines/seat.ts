@@ -1,8 +1,46 @@
-export class Seat{
-    constructor(private seatNumber: string){
+import { ClassSeat } from "../Enums/ClassSeat";
+
+export class Seat {
+    private seatPrice: number;
+
+    constructor(private seatNumber: string, private classSeat: ClassSeat) {
         this.seatNumber = seatNumber;
+        this.classSeat = classSeat;
+        this.seatPrice = this.calculateSeatPrice();
+       
     }
-    getSeatNumber(){
+
+    getSeatNumber(): string {
         return this.seatNumber;
     }
+
+    getClassSeat(): ClassSeat {
+        return this.classSeat;
+    }
+
+    getSeatPrice(): number {
+        return this.seatPrice;
+    }
+
+    private calculateSeatPrice(): number {
+        switch (this.classSeat) {
+            case ClassSeat.ACCESSIBLE:
+                return 100;
+            case ClassSeat.BUSSINESS:
+                return 200;
+            case ClassSeat.ECONOMY:
+                return 300;
+            case ClassSeat.EMERGENCYEXIT:
+                return 400;
+            case ClassSeat.FIRSTCLASS:
+                return 500;
+            default:
+                throw new Error("Unsupported seat type");
+        }
+    }
 }
+
+let seat1 = new Seat("2A", ClassSeat.FIRSTCLASS);
+
+// Accessing seat properties
+console.log(seat1);

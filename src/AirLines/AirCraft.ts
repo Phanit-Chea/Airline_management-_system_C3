@@ -1,20 +1,36 @@
 import { Flight } from "./Flight";
-import { Seat } from "./seat";
 
-export class airCraft{
-    constructor(private name: string,private flights:Flight[] ,private seatCapacity:number,private seats:Seat[]){
+import { ClassSeat } from "../Enums/ClassSeat";
+
+export class AirCraft {
+    private nbOfEachSeat: ClassSeat[];
+
+    constructor(private name: string, private flights: Flight[], private seat: number) {
         this.name = name;
-        this.flights=[];
-        this.seatCapacity= seatCapacity;
-        this.seats=[];
+        this.flights = flights; // Assigning provided flights, not an empty array
+        this.nbOfEachSeat = this.getNbOfEachSeat();
     }
-    getName(){
+
+    getName(): string {
         return this.name;
     }
-    getSeatCapacity(){
-        return this.seatCapacity;
-    }
-    addFlight(flight:Flight):void{
+
+    
+
+    addFlight(flight: Flight): void {
         this.flights.push(flight);
     }
+
+    getNbOfEachSeat(): ClassSeat[] {
+        let seatTypes: ClassSeat[] = [];
+        for (let seatType of Object.values(ClassSeat)) {
+            // seatTypes.push(seatType);
+        }
+        return seatTypes;
+    }
 }
+
+
+
+
+
