@@ -1,5 +1,7 @@
+import { ClassSeat } from "../Enums/ClassSeat";
+
 export class Seat{
-    constructor(private seatNumber: string){
+    constructor(private seatNumber: string, private classSeat:ClassSeat){
         this.seatNumber = seatNumber;
     }
     getSeatNumber(){

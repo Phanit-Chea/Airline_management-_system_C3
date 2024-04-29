@@ -1,28 +1,24 @@
 import { Flight } from "./Flight";
-import { Seat } from "./seat";
+export class AirCraft {
+    private flights: Flight[];
 
-export class airCraft{
-    constructor(private name: string,private numberOFSeat:number, private flights:Flight[] ,private seatCapacity:number,private seats:Seat[]){
+    constructor(private name: string, private model: string) {
         this.name = name;
-        this.numberOFSeat=numberOFSeat;
-        this.flights=[];
-        this.seatCapacity= seatCapacity;
-        this.seats=[];
+        this.model = model;
+        this.flights = [];
     }
-    getName(){
+
+    getName(): string {
         return this.name;
     }
-    getNumberOfSeat(){
-        return this.numberOFSeat;
+
+    getModel(): string {
+        return this.model;
     }
-    setNumberOfseat(numberOFSeat:number):number{
-        this.numberOFSeat=numberOFSeat;
-        return this.numberOFSeat;
-    }
-    getSeatCapacity(){
-        return this.seatCapacity;
-    }
-    addFlight(flight:Flight):void{
+
+    addFlight(flight: Flight): void {
         this.flights.push(flight);
     }
 }
+
+
