@@ -5,4 +5,5 @@ export enum TypeFood {
      VEGAN = "Vegan",
      GLUTENFREE = "GlutenFree",
      OTHER = "Other",
+
 }
