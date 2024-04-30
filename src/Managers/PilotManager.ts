@@ -33,7 +33,7 @@ const Pilot1 = new CrewMember(
   "0976715667",
   date_of_birth,
   Gender.MALE,
-  CrewType.PILOT,  // Pilot role
+  CrewType.PILOT,  
   address
 );
 // 
@@ -44,7 +44,7 @@ const Pilot3 = new CrewMember(
   "0987654321",
   date_of_birth,
   Gender.FEMALE,
-  CrewType.FLIGHTATTENDANT,  // Flight attendant role
+  CrewType.FLIGHTATTENDANT,  
   address
 );
 
