@@ -5,7 +5,7 @@ import { Person } from "./Person";
 import { DateTime } from "./DateTime";
 
 export class CrewMember extends Person {
-    private role: CrewType;
+    public role: CrewType;
 
     constructor(
         first_name: string,
