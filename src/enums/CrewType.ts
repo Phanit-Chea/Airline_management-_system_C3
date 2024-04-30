@@ -6,3 +6,4 @@ export enum CrewType {
      FLIGHTATTENDANT = "FlightAttendat",
      CHEF="Chef"
 }
+
