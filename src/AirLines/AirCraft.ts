@@ -19,6 +19,8 @@ export class AirCraft {
     addFlight(flight: Flight): void {
         this.flights.push(flight);
     }
+
+    
 }
 
 
