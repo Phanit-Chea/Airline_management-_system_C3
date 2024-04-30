@@ -53,7 +53,7 @@ Koeuk.addCrewMember(Pilot1);
 Koeuk.addCrewMember(Pilot3);
 Koeuk.addCrewMember(Pilot1);
 
-// console.log(Koeuk);
+console.log(Koeuk);
 const numberOfPilots = Koeuk.countPilots();
 console.log("Number of pilots:", numberOfPilots);
 
