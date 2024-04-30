@@ -1,34 +1,64 @@
+import { Passenger } from "../Passengers/Passenger";
 import { Route } from "../Routes/Route";
+import { Seat } from "./seat";
 
-export class Flight{
-    constructor(private flightID:number,private departureTime:string, private arriveTime:string,private DurationMenute:string,private route:Route){
-        this.flightID = flightID;
-        this.departureTime = departureTime;
-        this.arriveTime = arriveTime;
-        this.DurationMenute = DurationMenute;
+export class Flight {
+    public seats: Seat[] = [];
+    public route: Route[] = [];
+    private static allFlights: Flight[] = [];
+
+    constructor(
+        private flightID: number,
+        private departureTime: string,
+        private arriveTime: string,
+        private durationMinutes: string,
+    ) {
+        Flight.allFlights.push(this);
     }
-    getFlightID(){
+
+    getFlightID(): number {
         return this.flightID;
-    } 
-    getDepartureTime(){
+    }
+
+    getDepartureTime(): string {
         return this.departureTime;
     }
-    getArriveTime(){
+
+    getArriveTime(): string {
         return this.arriveTime;
     }
-    
-    getDurationMenute(){
-        return this.DurationMenute;
-    }
-    // set item 
 
-    setDepartureTime(departure:string){
+    getDurationMinutes(): string {
+        return this.durationMinutes;
+    }
+
+    setDepartureTime(departure: string): void {
         this.departureTime = departure;
     }
-    setArriveTime(arriveTime:string){
+
+    setArriveTime(arriveTime: string): void {
         this.arriveTime = arriveTime;
     }
-    setDurationMenute(DurationMenute:string):void{
-        this.DurationMenute = DurationMenute;
+
+    setDurationMinutes(durationMinutes: string): void {
+        this.durationMinutes = durationMinutes;
+    }
+
+    // addSeat(seat: Seat): void {
+    //     this.seats.push(seat);
+    // }
+
+    addRoute(route: Route): void {
+        this.route.push(route);
+    }
+
+    static getAllFlights(): Flight[] {
+        return Flight.allFlights;
     }
 }
+
+let flight1 = new Flight(12,"10:00am","3:00Pm","2h");
+
+let flight2 = new Flight(13,"10:00am","3:00Pm","2h");
+let flight3 = new Flight(14,"10:00am","3:00pm","2h");
+// console.log(Flight.getAllFlights());

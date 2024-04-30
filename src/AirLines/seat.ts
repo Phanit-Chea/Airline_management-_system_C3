@@ -1,7 +1,10 @@
 import { ClassSeat } from "../Enums/ClassSeat";
+import { Passenger } from "../Passengers/Passenger";
 
 export class Seat {
     private seatPrice: number;
+    private bookedBy: Passenger | null = null
+ 
 
     constructor(private seatNumber: string, private classSeat: ClassSeat) {
         this.seatNumber = seatNumber;
@@ -38,4 +41,22 @@ export class Seat {
                 throw new Error("Unsupported seat type");
         }
     }
+    isBooked(): boolean {
+        return this.bookedBy !== null;
+    }
+
+    book(passenger: Passenger): void {
+        this.bookedBy = passenger;
+    }
+
+    unbook(): void {
+        this.bookedBy = null;
+    }
+
+    getBookedBy(): Passenger | null {
+        return this.bookedBy;
+    }
+    
 }
+let seat = new Seat("kkk",ClassSeat.ACCESSIBLE);
+console.log(seat);
