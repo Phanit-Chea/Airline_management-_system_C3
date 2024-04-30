@@ -39,8 +39,3 @@ export class Seat {
         }
     }
 }
-
-let seat1 = new Seat("2A", ClassSeat.FIRSTCLASS);
-
-// Accessing seat properties
-console.log(seat1);
