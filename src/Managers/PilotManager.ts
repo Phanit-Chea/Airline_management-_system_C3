@@ -2,7 +2,6 @@ import { CrewMember } from "../Person/CrewMember";
 import { Gender } from "../enums/Gender";
 import { CrewType } from "../enums/CrewType";
 import { Address } from "../Person/Address";
-import { Person } from "../Person/Person";
 import { DateTime } from "../Person/DateTime";
 
 export class AirlineManager {
