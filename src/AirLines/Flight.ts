@@ -3,7 +3,6 @@ import { Route } from "../Routes/Route";
 import { Seat } from "./seat";
 
 export class Flight {
-    public seats: Seat[] = [];
     public route: Route[] = [];
     private static allFlights: Flight[] = [];
 
