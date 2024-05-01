@@ -4,12 +4,15 @@ import { Passenger } from "../Passengers/Passenger";
 export class Seat {
     private seatPrice: number;
     private bookedBy: Passenger | null = null
+    private static allSeats: Seat[] = [];
+    public isBooked: boolean;
  
 
-    constructor(private seatNumber: string, private classSeat: ClassSeat) {
+    constructor(private seatNumber: string, private classSeat: ClassSeat,isbook: boolean) {
         this.seatNumber = seatNumber;
         this.classSeat = classSeat;
         this.seatPrice = this.calculateSeatPrice();
+        this.isBooked = isbook;
        
     }
 
@@ -41,8 +44,8 @@ export class Seat {
                 throw new Error("Unsupported seat type");
         }
     }
-    isBooked(): boolean {
-        return this.bookedBy !== null;
+    bookSeat(): void {
+        this.isBooked = true;
     }
 
     book(passenger: Passenger): void {
@@ -56,7 +59,13 @@ export class Seat {
     getBookedBy(): Passenger | null {
         return this.bookedBy;
     }
+    static getAllSeats(): Seat[] {
+        return Seat.allSeats;
+    }
+
     
 }
-let seat = new Seat("kkk",ClassSeat.ACCESSIBLE);
-console.log(seat);
+let seat = new Seat("kkk",ClassSeat.ACCESSIBLE,false);
+console.log(Seat.getAllSeats());
+
+

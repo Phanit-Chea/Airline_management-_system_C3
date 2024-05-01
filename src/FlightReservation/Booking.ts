@@ -1,5 +1,5 @@
 import { Flight } from "../AirLines/Flight";
-import { Seat } from "../AirLines/seat";
+import { Seat } from "../AirLines/Seat";
 import { Baggage } from "../Baggages/Baggage";
 import { ClassSeat } from "../Enums/ClassSeat";
 import { Passenger } from "../Passengers/Passenger";
@@ -7,6 +7,8 @@ import { Address } from "../Person/Address";
 import { DateTime } from "../Person/DateTime";
 import { Route } from "../Routes/Route";
 import { Gender } from "../enums/Gender";
+import { Chef } from "./Chef";
+import { Meal } from "./Meal";
 
 
 // address 
@@ -50,13 +52,16 @@ let route = new Route(1, "2500Km", "PP", "Sr");
 // route add schedule 
 route.addSchedule(date1);
 // seat 
-let seat = new Seat("djfso",ClassSeat.ECONOMY);
+let seat = new Seat("djfso",ClassSeat.ECONOMY,false);
 // Creating an instance of Flight
-let flight1 = new Flight(1, "10:00", "12:00", "120");
-let flight2 = new Flight(2, "10:00", "12:00", "120");
-let flight3 = new Flight(3, "10:00", "12:00", "120");
-let flight4 = new Flight(4, "10:00", "12:00", "120");
-let flight5 = new Flight(4, "10:00", "12:00", "120");
+let chef = new Chef("KK");
+let meal=new Meal(120);
+chef.addMeal(meal);
+let flight1 = new Flight(1, "10:00", "12:00", "120",chef);
+let flight2 = new Flight(2, "10:00", "12:00", "120",chef);
+let flight3 = new Flight(3, "10:00", "12:00", "120",chef);
+let flight4 = new Flight(4, "10:00", "12:00", "120",chef);
+let flight5 = new Flight(4, "10:00", "12:00", "120",chef);
 
 // const flights: Flight[] = [flight1, flight2];
 

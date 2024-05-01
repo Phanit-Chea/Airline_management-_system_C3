@@ -9,7 +9,7 @@ export class Flight {
     public seats: Seat[] = [];
     public routes: Route[] = [];
     private static allFlights: Flight[] = [];
-    constructor(private flightID: number, private departureTime: string, private arriveTime: string, private durationMinutes: string, private chef: Chef, routes: Route[]) {
+    constructor(private flightID: number, private departureTime: string, private arriveTime: string, private durationMinutes: string, private chef: Chef) {
         this.flightID = flightID;
         this.departureTime = departureTime;
         this.arriveTime = arriveTime;
@@ -64,8 +64,8 @@ meal.setQuantityOfMeal(TypeFood.VEGAN, 20);
 meal.setQuantityOfMeal(TypeFood.GLUTENFREE, 50);
 meal.setQuantityOfMeal(TypeFood.OTHER, 30);
 
-let chef = new Chef("koeuk", meal);
+let chef = new Chef("koeuk");
 
-let flight = new Flight(12, "12-02-2023", "22-02-2023", "10 Days", chef, [route]);
+let flight = new Flight(12, "12-02-2023", "22-02-2023", "10 Days", chef);
 
 console.log(flight);

@@ -4,15 +4,17 @@ import { DateTime } from "../Person/DateTime";
 import { Person } from "../Person/Person";
 import { Baggage } from "../Baggages/Baggage";
 import { Flight } from "../AirLines/Flight";
-import { Seat } from "../AirLines/seat";
 import { ClassSeat } from "../Enums/ClassSeat";
-import { Route } from "../Routes/Route";
+import { Chef } from "../FlightReservation/Chef";
+import { Meal} from "../FlightReservation/Meal";
+import { Seat } from "../AirLines/Seat";
 
 export class Passenger extends Person {
     private passenger_id: number;
     private bags: Baggage[] = [];
     private bookedFlights: Flight[] = [];
-    
+    private bookedSeats: Seat[] = [];
+
 
     constructor(passenger_id: number, first_name: string, last_name: string, email: string, phone: string, date_of_birth: DateTime, gender: Gender, address: Address) {
         super(first_name, last_name, email, phone, date_of_birth, gender, address);
@@ -30,30 +32,41 @@ export class Passenger extends Person {
         });
         return totalWeight;
     }
-    bookingFlight(flightID: number): void |string {
+    bookingFlight(flightID: number): void {
         let flights = Flight.getAllFlights();
-        let flightBooking: Flight[] = [];
 
-        let found = false; // Flag to track if any flight is found with the given ID
+        // Find the flight with the given ID
+        let flight = flights.find(flight => flight.getFlightID() === flightID);
 
-        flights.forEach(flight => {
-            if (flight.getFlightID() === flightID) {
-                flightBooking.push(flight);
-                found = true; // Set flag to true if a flight is found
-            }
-        });
-        
-        if (this.bookedFlights.length <= 0){
-            return "no flight"
+        if (flight) {
+            this.bookedFlights.push(flight);
+        } else {
+            console.log(`Flight with ID ${flightID} not found.`);
         }
+
+        // You can perform further operations on flightBooking here
     }
     getBookedFlights(): Flight[] {
         return this.bookedFlights;
     }
-    bookingSeat(seat:Seat):void {
-
+    bookingSeat(seatNumber: string): void {
+        let seats = Seat.getAllSeats();
+        
+        // Find the seat with the given seatNumber
+        let seat = seats.find(seat => seat.getSeatNumber() === seatNumber);
+        
+        if (seat) {
+            // Update the seat to mark it as booked
+            seat.bookSeat();
+            console.log(`Seat ${seatNumber} booked.`);
+            this.bookedSeats.push(seat);
+        } else {
+            console.log(`Seat ${seatNumber} not found.`);
+        }
     }
-  
+    
+    
+
 }
 const address = new Address("371", "pp", "pp", "pp");
 let bag1 = new Baggage("1", 50);
@@ -70,18 +83,25 @@ const passenger1 = new Passenger(
     address
 );
 
-let flight1 = new Flight(1,"10:00am","4:30pm","2h");
-let flight2 = new Flight(2,"10:00am","4:30pm","2h");
+
+let chef = new Chef("KK");
+let meal=new Meal(120);
+chef.addMeal(meal);
+let flight1 = new Flight(1, "10:00am", "4:30pm", "2h",chef);
+let flight2 = new Flight(2, "10:00am", "4:30pm", "2h",chef);
 passenger1.addBag(bag1);
 passenger1.addBag(bag2);
+
+let seat = new Seat("kkk",ClassSeat.ACCESSIBLE,false);
 
 // passenger1.bookingFlight(flight1);
 // passenger1.bookingFlight(flight2);
 let allFlights = Flight.getAllFlights();
 let flightId = flight1.getFlightID()
-passenger1.bookingFlight(3)
-// console.log(passenger1);
-console.log(passenger1.getBookedFlights());
+passenger1.bookingFlight(flightId)
+// passenger1.bookingSeat(seat.getSeatNumber())
+console.log(Seat.getAllSeats());
+
 
 
 
