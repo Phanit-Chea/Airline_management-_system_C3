@@ -49,6 +49,6 @@ let Chefs = new Chef("koeuk",meal );
 
 let flight= new Flight(12,"12-02-2023","22-02-2023","10 Days",Chefs,route)
 
-console.log(flight);
+// console.log(flight);
 
 
