@@ -23,4 +23,4 @@ meal.setQuantityOfMeal(TypeFood.GLUTENFREE, 5);
 meal.setQuantityOfMeal(TypeFood.OTHER, 30);
 
 let Chefs = new Chef("koeuk",meal );
-console.log(Chefs);
+// console.log(Chefs);
