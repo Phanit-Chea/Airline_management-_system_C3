@@ -1,5 +1,6 @@
 import { ClassSeat } from "../Enums/ClassSeat";
 
+
 export class Seats {
     private capacityOfSeats: number;
     private seatTypeCount: { [key in ClassSeat]: number } = {
@@ -29,5 +30,5 @@ export class Seats {
 
 // Example usage
 let seats = new Seats(150);
-console.log(seats.getSeatTypeCount());
+// console.log(seats.getSeatTypeCount());
 
