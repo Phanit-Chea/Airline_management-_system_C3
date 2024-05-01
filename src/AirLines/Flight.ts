@@ -1,18 +1,20 @@
-import { Passenger } from "../Passengers/Passenger";
+
 import { Route } from "../Routes/Route";
-import { Seat } from "./seat";
+import { Seat } from "./Seat";
+import { Chef } from "../FlightReservation/Chef";
+import { Meal } from "../FlightReservation/Meal";
+import { TypeFood } from "../enums/TypeFood";
 
 export class Flight {
     public seats: Seat[] = [];
-    public route: Route[] = [];
+    public routes: Route[] = [];
     private static allFlights: Flight[] = [];
-
-    constructor(
-        private flightID: number,
-        private departureTime: string,
-        private arriveTime: string,
-        private durationMinutes: string,
-    ) {
+    constructor(private flightID: number, private departureTime: string, private arriveTime: string, private durationMinutes: string, private chef: Chef, routes: Route[]) {
+        this.flightID = flightID;
+        this.departureTime = departureTime;
+        this.arriveTime = arriveTime;
+        this.durationMinutes = durationMinutes;
+        this.chef = chef;
         Flight.allFlights.push(this);
     }
 
@@ -44,21 +46,26 @@ export class Flight {
         this.durationMinutes = durationMinutes;
     }
 
-    // addSeat(seat: Seat): void {
-    //     this.seats.push(seat);
-    // }
-
     addRoute(route: Route): void {
-        this.route.push(route);
+        this.routes.push(route);
     }
 
     static getAllFlights(): Flight[] {
         return Flight.allFlights;
     }
+    
 }
 
-let flight1 = new Flight(12,"10:00am","3:00Pm","2h");
+let route = new Route(12, "2000 km", "12-02-2023", "22-02-2023");
 
-let flight2 = new Flight(13,"10:00am","3:00Pm","2h");
-let flight3 = new Flight(14,"10:00am","3:00pm","2h");
-// console.log(Flight.getAllFlights());
+let meal = new Meal(200);
+meal.setQuantityOfMeal(TypeFood.VEGAN, 20);
+meal.setQuantityOfMeal(TypeFood.VEGAN, 20);
+meal.setQuantityOfMeal(TypeFood.GLUTENFREE, 50);
+meal.setQuantityOfMeal(TypeFood.OTHER, 30);
+
+let chef = new Chef("koeuk", meal);
+
+let flight = new Flight(12, "12-02-2023", "22-02-2023", "10 Days", chef, [route]);
+
+console.log(flight);
