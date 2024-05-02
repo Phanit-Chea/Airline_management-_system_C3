@@ -4,7 +4,9 @@ import { Meal } from "../FlightReservation/Meal";
 import { TypeFood } from "../enums/TypeFood";
 
 export class Flight{
-    constructor(private flightID:number,private departureTime:string, private arriveTime:string,private DurationMenute:string,private Chef:Chef ,private route:Route){
+    Chef:any;
+     date: string;
+    constructor(private flightID:number,private departureTime:string, private arriveTime:string,private DurationMenute:string,chef: Chef,private route:Route){
         this.flightID = flightID;
         this.departureTime = departureTime;
         this.arriveTime = arriveTime;
@@ -34,8 +36,8 @@ export class Flight{
     setDurationMenute(DurationMenute:string):void{
         this.DurationMenute = DurationMenute;
     }
-    getChef (Chef:Chef) {
-        this.Chef.nameChef;
+    addChef (chef:Chef) {
+        this.Chef.push(chef);
     }
 }
 let route = new Route(12,"2000 km","12-02-2023","22-02-2023")

@@ -49,6 +49,6 @@ const Pilot1 = new CrewMember(
     address                 // address
 );
 
-console.log(Pilot)
+// console.log(Pilot)
 
 

@@ -1,11 +1,17 @@
 import { Flight } from "./Flight";
 export class AirCraft {
+    getPilots() {
+         throw new Error("Method not implemented.");
+    }
+    getMaxPilots(): number {
+         throw new Error("Method not implemented.");
+    }
     private flights: Flight[];
 
-    constructor(private name: string, private model: string) {
+    constructor(private name: string, private model: string, ) {
         this.name = name;
         this.model = model;
-        this.flights = [];
+        // this.flights = [];
     }
 
     getName(): string {
