@@ -1,19 +1,19 @@
 import { ClassSeat } from "../Enums/ClassSeat";
-import { Passenger } from "../Passengers/Passenger";
 
 export class Seat {
     private seatPrice: number;
-    private bookedBy: Passenger | null = null
     private static allSeats: Seat[] = [];
     public isBooked: boolean;
- 
+    private capacitySeat: number = 0; // Initialize capacitySeat to 0
 
-    constructor(private seatNumber: string, private classSeat: ClassSeat,isbook: boolean) {
+    constructor(private seatNumber: string, private classSeat: ClassSeat, isBooked: boolean) {
         this.seatNumber = seatNumber;
         this.classSeat = classSeat;
         this.seatPrice = this.calculateSeatPrice();
-        this.isBooked = isbook;
-       
+        this.isBooked = isBooked;
+
+        // Add the newly created seat to the list of all seats
+        Seat.allSeats.push(this);
     }
 
     getSeatNumber(): string {
@@ -29,43 +29,38 @@ export class Seat {
     }
 
     private calculateSeatPrice(): number {
-        switch (this.classSeat) {
-            case ClassSeat.ACCESSIBLE:
-                return 100;
-            case ClassSeat.BUSSINESS:
-                return 200;
-            case ClassSeat.ECONOMY:
-                return 300;
-            case ClassSeat.EMERGENCYEXIT:
-                return 400;
-            case ClassSeat.FIRSTCLASS:
-                return 500;
-            default:
-                throw new Error("Unsupported seat type");
+        if (this.classSeat === ClassSeat.ACCESSIBLE) {
+            return 100;
+        } else if (this.classSeat === ClassSeat.BUSSINESS) {
+            return 200;
+        } else if (this.classSeat === ClassSeat.ECONOMY) {
+            return 300;
+        } else if (this.classSeat === ClassSeat.EMERGENCYEXIT) {
+            return 400;
+        } else if (this.classSeat === ClassSeat.FIRSTCLASS) {
+            return 500;
+        } else {
+            throw new Error("Unsupported seat type");
         }
     }
+    
+
     bookSeat(): void {
         this.isBooked = true;
     }
 
-    book(passenger: Passenger): void {
-        this.bookedBy = passenger;
-    }
-
-    unbook(): void {
-        this.bookedBy = null;
-    }
-
-    getBookedBy(): Passenger | null {
-        return this.bookedBy;
-    }
     static getAllSeats(): Seat[] {
         return Seat.allSeats;
+    }   
+
+    addCapacity(capacity: number): void { // corrected the method name to addCapacity
+        this.capacitySeat += capacity; // Increment the existing capacity
     }
-
-    
 }
-let seat = new Seat("kkk",ClassSeat.ACCESSIBLE,false);
-console.log(Seat.getAllSeats());
 
+// Create a new seat
+let seat = new Seat("kkk", ClassSeat.ACCESSIBLE, false);
+let seat1 = new Seat("kkk", ClassSeat.ACCESSIBLE, false);
 
+// Now the seat will be added to the list of all seats
+seat.addCapacity(1); // Add capacity to the seat

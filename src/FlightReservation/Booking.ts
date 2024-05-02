@@ -7,6 +7,7 @@ import { Address } from "../Person/Address";
 import { DateTime } from "../Person/DateTime";
 import { Route } from "../Routes/Route";
 import { Gender } from "../enums/Gender";
+import { TypeFood } from "../enums/TypeFood";
 import { Chef } from "./Chef";
 import { Meal } from "./Meal";
 
@@ -55,8 +56,8 @@ route.addSchedule(date1);
 let seat = new Seat("djfso",ClassSeat.ECONOMY,false);
 // Creating an instance of Flight
 let chef = new Chef("KK");
-let meal=new Meal(120);
-chef.addMeal(meal);
+// let meal=new Meal(1,"Kooko",TypeFood.GLUTENFREE);
+// chef.addMeal(meal);
 let flight1 = new Flight(1, "10:00", "12:00", "120",chef);
 let flight2 = new Flight(2, "10:00", "12:00", "120",chef);
 let flight3 = new Flight(3, "10:00", "12:00", "120",chef);

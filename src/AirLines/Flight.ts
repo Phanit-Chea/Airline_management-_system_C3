@@ -58,14 +58,14 @@ export class Flight {
 
 let route = new Route(12, "2000 km", "12-02-2023", "22-02-2023");
 
-let meal = new Meal(200);
-meal.setQuantityOfMeal(TypeFood.VEGAN, 20);
-meal.setQuantityOfMeal(TypeFood.VEGAN, 20);
-meal.setQuantityOfMeal(TypeFood.GLUTENFREE, 50);
-meal.setQuantityOfMeal(TypeFood.OTHER, 30);
+// // let meal = new Meal(200);
+// meal.setQuantityOfMeal(TypeFood.VEGAN, 20);
+// meal.setQuantityOfMeal(TypeFood.VEGAN, 20);
+// meal.setQuantityOfMeal(TypeFood.GLUTENFREE, 50);
+// meal.setQuantityOfMeal(TypeFood.OTHER, 30);
 
 let chef = new Chef("koeuk");
 
 let flight = new Flight(12, "12-02-2023", "22-02-2023", "10 Days", chef);
 
-console.log(flight);
+// console.log(flight);

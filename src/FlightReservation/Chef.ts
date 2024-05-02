@@ -18,12 +18,9 @@ export class Chef {
      }
     
 }
-let meal=new Meal(120);
-meal.setQuantityOfMeal(TypeFood.VEGETERAIN, 15);
-meal.setQuantityOfMeal(TypeFood.VEGAN, 20);
-meal.setQuantityOfMeal(TypeFood.GLUTENFREE, 5);
-meal.setQuantityOfMeal(TypeFood.OTHER, 30);
+// let meal=new Meal(1,"Doo",TypeFood.GLUTENFREE);
 
-let Chefs = new Chef("koeuk");
-Chefs.addMeal(meal)
-console.log(Chefs);
+
+// let Chefs = new Chef("koeuk");
+// Chefs.addMeal(meal)
+// console.log(Chefs);
