@@ -1,17 +1,18 @@
 import { CrewMember } from "../Person/CrewMember";
+import { DateTime } from "../Person/DateTime";
 
 export class Schedule {
     private crewMembers: CrewMember[];
 
-    constructor(private date: Date) {
-        this.date = date;
+    constructor(private date: DateTime) {
         this.crewMembers = [];
     }
 
-    getDate(): Date {
+    getDate(): DateTime {
         return this.date;
     }
-    setDate(date: Date): void {
+
+    setDate(date: DateTime): void {
         this.date = date;
     }
 

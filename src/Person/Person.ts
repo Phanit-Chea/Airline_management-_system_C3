@@ -1,4 +1,4 @@
-import { Gender } from "../Enums/Gender";
+import { Gender } from "../enums/Gender";
 import { Address } from "./Address";
 import { DateTime } from "./DateTime";
 export abstract class Person {

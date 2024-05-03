@@ -1,4 +1,4 @@
-import { TypeFood } from "../Enums/TypeFood";
+import { TypeFood } from "../enums/TypeFood";
 
 export class Meal {
     private mealNumber: number;
@@ -43,7 +43,6 @@ export class Meal {
 
     private calculateMealPrice(): void {
         if (this.quantityMeal === 0 || this.quantityMeal ===1) {
-            // If quantity is zero, set price to base price
             if (this.mealType === TypeFood.GLUTENFREE) {
                 this.mealPrice = 100;
             } else if (this.mealType === TypeFood.VEGAN) {
@@ -56,7 +55,6 @@ export class Meal {
                 throw new Error("Unsupported meal type");
             }
         } else {
-            // If quantity is not zero, calculate price based on base price and quantity
             if (this.mealType === TypeFood.GLUTENFREE) {
                 this.mealPrice = 100 * this.quantityMeal;
             } else if (this.mealType === TypeFood.VEGAN) {

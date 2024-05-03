@@ -1,4 +1,4 @@
-import { ClassSeat } from "../Enums/ClassSeat";
+import { ClassSeat } from "../enums/ClassSeat";
 
 export class Seat {
     private seatPrice: number;
@@ -10,7 +10,7 @@ export class Seat {
         this.seatNumber = seatNumber;
         this.classSeat = classSeat;
         this.isBooked = isBooked;
-        this.seatPrice = this.calculateSeatPrice(); // Calculate seat price upon initialization
+        this.seatPrice = this.calculateSeatPrice(); 
         Seat.allSeats.push(this);
     }
 
@@ -42,7 +42,6 @@ export class Seat {
                 throw new Error("Unsupported class seat");
             }
         } else {
-            // Calculate price based on base price and capacity
             if (this.classSeat === ClassSeat.ACCESSIBLE) {
                 basePrice = 100;
             } else if (this.classSeat === ClassSeat.BUSSINESS) {
@@ -68,7 +67,6 @@ export class Seat {
 
     addCapacity(capacity: number): void {
         this.capacitySeat += capacity;
-        // Recalculate seat price when capacity changes
         this.seatPrice = this.calculateSeatPrice();
     }
 }

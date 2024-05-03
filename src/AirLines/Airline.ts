@@ -1,5 +1,6 @@
 import { AirCraft } from "./AirCraft";
 import { Airport } from "./Airport";
+import { Flight } from "./Flight";
 
 export class Airline{
     private airCraft:AirCraft[]=[];
@@ -20,5 +21,6 @@ export class Airline{
     addAircraft(aircraft:AirCraft):void{
         this.airCraft.push(aircraft)
     }
+    
 }
 

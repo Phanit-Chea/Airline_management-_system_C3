@@ -1,5 +1,5 @@
-import { Gender } from "../Enums/Gender";
-import { CrewType } from "../Enums/CrewType";
+import { Gender } from "../enums/Gender";
+import { CrewType } from "../enums/CrewType";
 import { Address } from "./Address";
 import { Person } from "./Person";
 import { DateTime } from "./DateTime";

@@ -3,10 +3,11 @@ import { Address } from "../Person/Address";
 import { Flight } from "./Flight";
 
 export class Airport{
-    constructor(private name:string,private code:string, private address:Address,private flights:Flight[]){
+    private flights:Flight[]=[]
+    constructor(private name:string,private code:string, private address:Address){
         this.name = name;
         this.code = code;
-        this.flights=[];
+      
     }
     getName(){
         return this.name;
@@ -17,9 +18,12 @@ export class Airport{
     addAirline(flight: Flight): void {
         this.flights.push(flight);
     }
-
-    addFlight(flight:Flight):void{
-        this.flights.push(flight);
-
+    addFlight(flight: Flight): void {
+        if (!this.flights.includes(flight)) {
+            this.flights.push(flight);
+        } else {
+            console.log("Flight already exists in the airport."); // Optionally, you can handle this case according to your requirements
+        }
     }
+    
 }

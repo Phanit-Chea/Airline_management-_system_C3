@@ -1,4 +1,4 @@
-import { ClassSeat } from "../Enums/ClassSeat";
+import { ClassSeat } from "../enums/ClassSeat";
 
 export class SeatList {
     private capacityOfSeats: number;
@@ -27,8 +27,5 @@ export class SeatList {
         return this.capacityOfSeats;
     }
 }
-
-
-let seats = new SeatList(150);
 
 

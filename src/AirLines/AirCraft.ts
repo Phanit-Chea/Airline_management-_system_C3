@@ -1,5 +1,4 @@
-import { DateTime } from "../Person/DateTime";
-import { Route } from "../Routes/Route";
+
 import { Flight } from "./Flight";
 import { SeatList } from "./SeatList";
 
@@ -16,7 +15,6 @@ export class AirCraft {
     constructor(private name: string, private model: string, ) {
         this.name = name;
         this.model = model;
-        // this.flights = [];
     }
 
     getName(): string {
@@ -28,8 +26,12 @@ export class AirCraft {
     }
 
     addFlight(flight: Flight): void {
+        if (!this.flights) {
+            this.flights = []; // Initialize the flights array if it's not already initialized
+        }
         this.flights.push(flight);
     }
+    
     addSeats(seats: SeatList): void {
         this.seats = seats;
     }

@@ -3,14 +3,14 @@ import { DateTime } from "../Person/DateTime";
 import { Person } from "../Person/Person";
 import { Baggage } from "../Baggages/Baggage";
 import { Flight } from "../AirLines/Flight";
-import { ClassSeat } from "../Enums/ClassSeat";
+import { ClassSeat } from "../enums/ClassSeat";
 import { Chef } from "../FlightReservation/Chef";
 import { Meal } from "../FlightReservation/Meal";
 import { Seat } from "../AirLines/seat"; // Corrected import path
-import { TypeFood } from "../Enums/TypeFood";
+import { TypeFood } from "../enums/TypeFood";
 import { Trip } from "../Trips/Trip";
-import { Gender } from "../Enums/Gender";
-import { Ticket } from "../Enums/Ticket";
+import { Gender } from "../enums/Gender";
+import { Ticket } from "../enums/Ticket";
 
 export class Passenger extends Person {
     private passenger_id: number;
@@ -110,54 +110,3 @@ export class Passenger extends Person {
     }
 }
 
-const address = new Address("371", "pp", "pp", "pp");
-let bag1 = new Baggage("1", 50);
-let bag2 = new Baggage("2", 50);
-let date_of_birth = new DateTime(2002, "April", 9);
-const passenger1 = new Passenger(
-    1,
-    "John",
-    "Doe",
-    "john.doe@example.com",
-    "123-456-7890",
-    date_of_birth,
-    Gender.FEMALE,
-    address
-);
-
-const passenger2 = new Passenger(
-    2, // Changed passenger ID
-    "Jane", // Different name
-    "Smith", // Different last name
-    "jane.smith@example.com", // Different email
-    "987-654-3210", // Different phone
-    date_of_birth, // Same date of birth
-    Gender.MALE, // Different gender
-    address // Same address
-);
-
-let chef = new Chef("KK");
-let flight1 = new Flight(1, "10:00am", "4:30pm", 2,Ticket.JUSTGO);
-let flight2 = new Flight(2, "10:00am", "4:30pm", 2, Ticket.RETURN);
-
-passenger1.addBag(bag1);
-passenger1.addBag(bag2);
-
-let seat = new Seat("kkk", ClassSeat.ACCESSIBLE, false);
-seat.addCapacity(2);
-
-let flightId = flight1.getFlightID();
-passenger1.bookingFlight(flightId);
-
-passenger2.bookingSeat(seat.getSeatNumber());
-
-let meals = new Meal(1, "kkoo", TypeFood.GLUTENFREE);
-meals.addQuantity(2);
-chef.addMeal(meals);
-passenger2.bookingMeal(meals.getMealNumber());
-
-let trips = new Trip(1, "kkoo");
-passenger2.bookingTrip(trips.getTripNumber());
-// console.log(passenger2.getPassengerId()); 
-console.log(Passenger.getPassengerByID(passenger2.getPassengerId()));
-// Not clear why this is logged

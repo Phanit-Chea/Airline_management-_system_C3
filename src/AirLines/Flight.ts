@@ -1,11 +1,11 @@
 import { Route } from "../Routes/Route";
 import { Seat } from "./seat";
 import { Chef } from "../FlightReservation/Chef";
-import { Ticket } from "../Enums/Ticket";
+import { Ticket } from "../enums/Ticket";
 
 export class Flight {
     public seats: Seat[] = [];
-    public routes: Route[] = [];
+    public ruotes: Route[] = [];
     private static allFlights: Flight[] = [];
     private isReturn: Ticket;
     private chef : Chef[]=[];
@@ -51,7 +51,7 @@ export class Flight {
         this.arriveTime = arriveTime;
     }
 
-    setDurationMinutes(durationMinutes: number): void { // Changed parameter type to number
+    setDurationMinutes(durationMinutes: number): void { 
         this.durationMinutes = durationMinutes;
     }
     addChef (chef:Chef) {
@@ -64,12 +64,14 @@ export class Flight {
     getTicketType(): string {
         return this.isReturn;
     }
-    setReturn(isReturn: Ticket): void { // Changed parameter type to Ticket
+    setReturn(isReturn: Ticket): void { 
         this.isReturn = isReturn;
+    }
+    addRoute(route:Route):void{
+        this.ruotes.push(route)
     }
 
 
 }
-let flight1 = new Flight(1,"123","323",2,Ticket.RETURN);
-// console.log(flight1);
+
 

@@ -1,4 +1,4 @@
-import { CrewType } from "../Enums/CrewType";
+import { CrewType } from "../enums/CrewType";
 
 export class AirlinePayment {
   private paymentID: number;

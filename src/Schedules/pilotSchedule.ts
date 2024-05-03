@@ -2,8 +2,8 @@
 
 
 import { Flight } from "../AirLines/Flight";
-import { CrewType } from "../Enums/CrewType";
-import { Gender } from "../Enums/Gender";
+import { CrewType } from "../enums/CrewType";
+import { Gender } from "../enums/Gender";
 import { Chef } from "../FlightReservation/Chef";
 import { Address } from "../Person/Address";
 import { CrewMember } from "../Person/CrewMember";
@@ -11,8 +11,8 @@ import { DateTime } from "../Person/DateTime";
 import { Route } from "../Routes/Route";
 import { Meal } from "../FlightReservation/Meal";
 import { AirCraft } from "../AirLines/AirCraft";
-import { TypeFood } from "../Enums/TypeFood";
-import { Ticket } from "../Enums/Ticket";
+import { TypeFood } from "../enums/TypeFood";
+import { Ticket } from "../enums/Ticket";
 
 export class Schedule {
     private Pilot: CrewMember[];
