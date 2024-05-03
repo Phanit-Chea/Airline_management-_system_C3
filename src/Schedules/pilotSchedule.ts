@@ -2,8 +2,8 @@
 
 
 import { Flight } from "../AirLines/Flight";
-import { CrewType } from "../enums/CrewType";
-import { Gender } from "../enums/Gender";
+import { CrewType } from "../Enums/CrewType";
+import { Gender } from "../Enums/Gender";
 import { Chef } from "../FlightReservation/Chef";
 import { Address } from "../Person/Address";
 import { CrewMember } from "../Person/CrewMember";
@@ -11,6 +11,8 @@ import { DateTime } from "../Person/DateTime";
 import { Route } from "../Routes/Route";
 import { Meal } from "../FlightReservation/Meal";
 import { AirCraft } from "../AirLines/AirCraft";
+import { TypeFood } from "../Enums/TypeFood";
+import { Ticket } from "../Enums/Ticket";
 
 export class Schedule {
     private Pilot: CrewMember[];
@@ -41,11 +43,12 @@ export class Schedule {
      this.aircraft.push(aircraft);
     }
 }
-let meal1 = new Meal(1)
-let meal2 = new Meal(2)
+let meal1 = new Meal(1,"Soup",TypeFood.VEGAN)
+let meal2 = new Meal(2,"Soup",TypeFood.VEGAN)
 
-let chef1 = new Chef("Niit",meal1)
-let chef2 = new Chef("Niit",meal2)
+let chef1 = new Chef("Niit")
+let chef2 = new Chef("Niit")
+chef1.addMeal(meal1);
 
 let route1 =new Route(12, "2000 km", "PP", "SR")
 let route2 =new Route(12, "2000 km", "PP", "SR")
@@ -53,8 +56,8 @@ let route2 =new Route(12, "2000 km", "PP", "SR")
 let pilot1 = new CrewMember("Jena", "leetiza", "jena@gmail.com", "012-222-333", new DateTime(2002, "April", 9), Gender.MALE, CrewType.PILOT, new Address("123", "PP", "Cambodai"));
 let pilot2 = new CrewMember("koeuk", "leetiza", "jena@gmail.com", "012-222-333", new DateTime(2002, "April", 9), Gender.MALE, CrewType.PILOT, new Address("123", "PP", "Cambodai"));
 
-let flight1 = new Flight(12, "3:30mn", "5:30mn", "2h",chef1,route1 );
-let flight2 = new Flight(13, "4:30mn", "7:30mn", "2h:12mn",chef2,route2 );
+let flight1 = new Flight(12, "3:30mn", "5:30mn", 2,Ticket.JUSTGO);
+let flight2 = new Flight(13, "4:30mn", "7:30mn", 2,Ticket.JUSTGO );
 
 let airCraft1 = new AirCraft("KVN","Booing-202")
 let airCraft2 = new AirCraft("A23","Booing-230")
