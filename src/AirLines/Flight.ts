@@ -1,7 +1,7 @@
 import { Route } from "../Routes/Route";
 import { Seat } from "./seat";
 import { Chef } from "../FlightReservation/Chef";
-import { Ticket } from "../Enums/Ticket";
+import { Ticket } from "../enums/Ticket";
 
 export class Flight {
     public seats: Seat[] = [];

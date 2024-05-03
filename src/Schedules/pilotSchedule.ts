@@ -1,71 +1,52 @@
-
-
-
-import { Flight } from "../AirLines/Flight";
-import { CrewType } from "../Enums/CrewType";
-import { Gender } from "../Enums/Gender";
-import { Chef } from "../FlightReservation/Chef";
-import { Address } from "../Person/Address";
 import { CrewMember } from "../Person/CrewMember";
-import { DateTime } from "../Person/DateTime";
-import { Route } from "../Routes/Route";
-import { Meal } from "../FlightReservation/Meal";
 import { AirCraft } from "../AirLines/AirCraft";
-import { TypeFood } from "../Enums/TypeFood";
-import { Ticket } from "../Enums/Ticket";
+import { Schedule } from "./Schedule";
+import { Gender } from "../Enums/Gender";
+import { CrewType } from "../Enums/CrewType";
+import { Address } from "../Person/Address";
+import { DateTime } from "../Person/DateTime";
+import { Flight } from "../AirLines/Flight";
+import { Ticket } from "../enums/Ticket";
+import { Route } from "../Routes/Route";
 
-export class Schedule {
-    private Pilot: CrewMember[];
-    private flight: Flight[];
-    private aircraft : AirCraft[]
+export class PilotSchedule {
+    private pilots: CrewMember[] = [];
 
-    constructor(private date: Date, Pilot: CrewMember[] = [],flight:Flight[],  aircraft: AirCraft[] =[]) {
-        this.date = date;
-        this.Pilot = Pilot;
-        this.flight =flight;
-        this.aircraft =aircraft;
-    }
-
-    getDate(): Date {
-        return this.date;
-    }
-    setDate(date: Date): void {
-        this.date = date;
+    constructor(private schedule: Schedule, private flight: Flight, private aircraft: AirCraft) {
     }
 
-    addCrewMember(crewMember: CrewMember): void {
-        this.Pilot.push(crewMember);
+    addPilot(pilot: CrewMember): void {
+        this.pilots.push(pilot);
     }
-    addFlight(flight: Flight): void {
-        this.flight.push(flight);
+
+    setSchedule(schedule: Schedule): void {
+        this.schedule = schedule;
     }
-    addAirCraft(aircraft:AirCraft) :void {
-     this.aircraft.push(aircraft);
+
+    getSchedule(): Schedule {
+        return this.schedule;
+    }
+
+    getFlight(): Flight {
+        return this.flight;
+    }
+
+    getAircraft(): AirCraft {
+        return this.aircraft;
+    }
+
+    getPilots(): CrewMember[] {
+        return this.pilots;
     }
 }
-let meal1 = new Meal(1,"Soup",TypeFood.VEGAN)
-let meal2 = new Meal(2,"Soup",TypeFood.VEGAN)
 
-let chef1 = new Chef("Niit")
-let chef2 = new Chef("Niit")
-chef1.addMeal(meal1);
+// Example usage
+const pilot1 = new CrewMember("Jena", "leetiza", "jena@gmail.com", "012-222-333", new DateTime(2002, "April", 9), Gender.MALE, CrewType.PILOT, new Address("123", "PP", "SR"));
+const flight1 = new Flight(1, "123", "323", 2, Ticket.RETURN);
+const airCraft1 = new AirCraft("KVN", "Booing-202");
+const route = new Route(1, "2000 km", "PP", "SR");
+const schedule = new Schedule(new Date("2024-05-02"), 2, route);
+const pilotSchedule = new PilotSchedule(schedule, flight1, airCraft1);
+pilotSchedule.addPilot(pilot1);
 
-let route1 =new Route(12, "2000 km", "PP", "SR")
-let route2 =new Route(12, "2000 km", "PP", "SR")
-
-let pilot1 = new CrewMember("Jena", "leetiza", "jena@gmail.com", "012-222-333", new DateTime(2002, "April", 9), Gender.MALE, CrewType.PILOT, new Address("123", "PP", "Cambodai"));
-let pilot2 = new CrewMember("koeuk", "leetiza", "jena@gmail.com", "012-222-333", new DateTime(2002, "April", 9), Gender.MALE, CrewType.PILOT, new Address("123", "PP", "Cambodai"));
-
-let flight1 = new Flight(12, "3:30mn", "5:30mn", 2,Ticket.JUSTGO);
-let flight2 = new Flight(13, "4:30mn", "7:30mn", 2,Ticket.JUSTGO );
-
-let airCraft1 = new AirCraft("KVN","Booing-202")
-let airCraft2 = new AirCraft("A23","Booing-230")
-
-let schedule1 = new Schedule(new Date("2024-05-02"), [pilot1],[flight1],[airCraft1]);
-let schedule2 = new Schedule(new Date("2024-05-02"), [pilot2],[flight2],[airCraft2]);
-
-// let arr: Schedule[] = [] ;
-// arr.push(schedule1,schedule2)
-// console.log(arr);
-console.log(schedule1,schedule2);
+// console.log(pilotSchedule);
