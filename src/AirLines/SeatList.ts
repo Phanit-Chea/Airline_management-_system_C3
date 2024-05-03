@@ -29,19 +29,6 @@ export class SeatList {
 }
 
 
-const seatList = new SeatList(200); // Assuming capacity is 200 for demonstration
-
-// Set counts for specific seat types (optional)
-seatList.setSeatTypeCount(ClassSeat.FIRSTCLASS, 25); // Setting count for FIRSTCLASS seats to 25
-seatList.setSeatTypeCount(ClassSeat.BUSSINESS, 35); // Setting count for BUSSINESS seats to 35
-// Similarly, you can set counts for other seat types if needed
-
-// Retrieve seat type counts and capacity
-const seatTypeCount = seatList.getSeatTypeCount();
-const capacityOfSeats = seatList.getCapacityOfSeats();
-
-// Log the results
-console.log("Seat Type Count:", seatTypeCount);
-console.log("Capacity of Seats:", capacityOfSeats);
+let seats = new SeatList(150);
 
 

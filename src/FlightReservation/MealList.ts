@@ -1,4 +1,4 @@
-import { TypeFood } from "../enums/TypeFood";
+import { TypeFood } from "../Enums/TypeFood";
 
 export class MealList {
     private capacityOfMeal: number;

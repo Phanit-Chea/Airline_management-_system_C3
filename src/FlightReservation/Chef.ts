@@ -1,4 +1,4 @@
-import { TypeFood } from "../enums/TypeFood";
+
 import { Meal } from "../FlightReservation/Meal";
 
 export class Chef {
@@ -18,9 +18,3 @@ export class Chef {
      }
     
 }
-// let meal=new Meal(1,"Doo",TypeFood.GLUTENFREE);
-
-
-// let Chefs = new Chef("koeuk");
-// Chefs.addMeal(meal)
-// console.log(Chefs);

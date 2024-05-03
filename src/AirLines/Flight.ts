@@ -1,20 +1,29 @@
-
 import { Route } from "../Routes/Route";
-import { Seat } from "./Seat";
+import { Seat } from "./seat";
 import { Chef } from "../FlightReservation/Chef";
-import { Meal } from "../FlightReservation/Meal";
-import { TypeFood } from "../enums/TypeFood";
+import { Ticket } from "../Enums/Ticket";
 
 export class Flight {
     public seats: Seat[] = [];
     public routes: Route[] = [];
     private static allFlights: Flight[] = [];
-    constructor(private flightID: number, private departureTime: string, private arriveTime: string, private durationMinutes: string, private chef: Chef) {
+    private isReturn: Ticket;
+    private chef : Chef[]=[];
+
+    constructor(
+        private flightID: number,
+        private departureTime: string,
+        private arriveTime: string,
+        private durationMinutes: number,
+     
+        isReturn: Ticket // Changed type to Ticket
+    ) {
         this.flightID = flightID;
         this.departureTime = departureTime;
         this.arriveTime = arriveTime;
         this.durationMinutes = durationMinutes;
-        this.chef = chef;
+
+        this.isReturn = isReturn;
         Flight.allFlights.push(this);
     }
 
@@ -30,7 +39,7 @@ export class Flight {
         return this.arriveTime;
     }
 
-    getDurationMinutes(): string {
+    getDurationMinutes(): number { // Changed return type to number
         return this.durationMinutes;
     }
 
@@ -42,7 +51,7 @@ export class Flight {
         this.arriveTime = arriveTime;
     }
 
-    setDurationMinutes(durationMinutes: string): void {
+    setDurationMinutes(durationMinutes: number): void { // Changed parameter type to number
         this.durationMinutes = durationMinutes;
     }
 
@@ -53,19 +62,15 @@ export class Flight {
     static getAllFlights(): Flight[] {
         return Flight.allFlights;
     }
-    
+    getTicketType(): string {
+        return this.isReturn;
+    }
+    setReturn(isReturn: Ticket): void { // Changed parameter type to Ticket
+        this.isReturn = isReturn;
+    }
+
+
 }
+let flight1 = new Flight(1,"123","323",2,Ticket.RETURN);
+// console.log(flight1);
 
-let route = new Route(12, "2000 km", "12-02-2023", "22-02-2023");
-
-// // let meal = new Meal(200);
-// meal.setQuantityOfMeal(TypeFood.VEGAN, 20);
-// meal.setQuantityOfMeal(TypeFood.VEGAN, 20);
-// meal.setQuantityOfMeal(TypeFood.GLUTENFREE, 50);
-// meal.setQuantityOfMeal(TypeFood.OTHER, 30);
-
-let chef = new Chef("koeuk");
-
-let flight = new Flight(12, "12-02-2023", "22-02-2023", "10 Days", chef);
-
-// console.log(flight);

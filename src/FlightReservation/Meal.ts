@@ -1,4 +1,4 @@
-import { TypeFood } from "../enums/TypeFood";
+import { TypeFood } from "../Enums/TypeFood";
 
 export class Meal {
     private mealNumber: number;
@@ -42,7 +42,7 @@ export class Meal {
     }
 
     private calculateMealPrice(): void {
-        if (this.quantityMeal === 0) {
+        if (this.quantityMeal === 0 || this.quantityMeal ===1) {
             // If quantity is zero, set price to base price
             if (this.mealType === TypeFood.GLUTENFREE) {
                 this.mealPrice = 100;
