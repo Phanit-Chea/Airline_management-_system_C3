@@ -1,56 +1,75 @@
 import { Route } from "../Routes/Route";
+import { Seat } from "./seat";
 import { Chef } from "../FlightReservation/Chef";
-import { Meal } from "../FlightReservation/Meal";
-import { TypeFood } from "../enums/TypeFood";
+import { Ticket } from "../Enums/Ticket";
 
-export class Flight{
-    Chef:any;
-     date: string;
-    constructor(private flightID:number,private departureTime:string, private arriveTime:string,private DurationMenute:string,chef: Chef,private route:Route){
+export class Flight {
+    public seats: Seat[] = [];
+    public routes: Route[] = [];
+    private static allFlights: Flight[] = [];
+    private isReturn: Ticket;
+    private chef : Chef[]=[];
+
+    constructor(
+        private flightID: number,
+        private departureTime: string,
+        private arriveTime: string,
+        private durationMinutes: number,
+     
+        isReturn: Ticket // Changed type to Ticket
+    ) {
         this.flightID = flightID;
         this.departureTime = departureTime;
         this.arriveTime = arriveTime;
-        this.DurationMenute = DurationMenute;
+        this.durationMinutes = durationMinutes;
+
+        this.isReturn = isReturn;
+        Flight.allFlights.push(this);
     }
-    getFlightID(){
+
+    getFlightID(): number {
         return this.flightID;
-    } 
-    getDepartureTime(){
+    }
+
+    getDepartureTime(): string {
         return this.departureTime;
     }
-    getArriveTime(){
+
+    getArriveTime(): string {
         return this.arriveTime;
     }
-    
-    getDurationMenute(){
-        return this.DurationMenute;
-    }
-    // set item 
 
-    setDepartureTime(departure:string){
+    getDurationMinutes(): number { // Changed return type to number
+        return this.durationMinutes;
+    }
+
+    setDepartureTime(departure: string): void {
         this.departureTime = departure;
     }
-    setArriveTime(arriveTime:string){
+
+    setArriveTime(arriveTime: string): void {
         this.arriveTime = arriveTime;
     }
-    setDurationMenute(DurationMenute:string):void{
-        this.DurationMenute = DurationMenute;
+
+    setDurationMinutes(durationMinutes: number): void { // Changed parameter type to number
+        this.durationMinutes = durationMinutes;
     }
     addChef (chef:Chef) {
-        this.Chef.push(chef);
+        this.chef.push(chef);
     }
+
+    static getAllFlights(): Flight[] {
+        return Flight.allFlights;
+    }
+    getTicketType(): string {
+        return this.isReturn;
+    }
+    setReturn(isReturn: Ticket): void { // Changed parameter type to Ticket
+        this.isReturn = isReturn;
+    }
+
+
 }
-let route = new Route(12,"2000 km","12-02-2023","22-02-2023")
-let meal = new Meal (200);
-meal.setQuantityOfMeal(TypeFood.GLUTENFREE,20);
-meal.setQuantityOfMeal(TypeFood.VEGAN, 20);
-meal.setQuantityOfMeal(TypeFood.GLUTENFREE, 50);
-meal.setQuantityOfMeal(TypeFood.OTHER, 30);
-
-let Chefs = new Chef("koeuk",meal );
-
-let flight= new Flight(12,"12-02-2023","22-02-2023","10 Days",Chefs,route)
-
-// console.log(flight);
-
+let flight1 = new Flight(1,"123","323",2,Ticket.RETURN);
+// console.log(flight1);
 

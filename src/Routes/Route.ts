@@ -1,13 +1,14 @@
-import { Schedule } from "../Schedules/Schedule";
+import { DateTime } from "../Person/DateTime";
+
 export class Route {
-    private schedules: Schedule[];
-    constructor(private routeID: number, private distance: string, private departureAirport: string, private arrivalAirport: string) {
-        this.routeID = routeID;
-        this.distance = distance;
-        this.departureAirport = departureAirport;
-        this.arrivalAirport = arrivalAirport;
-        this.schedules = [];
-    }
+    private schedules: DateTime[] = [];
+
+    constructor(
+        private routeID: number,
+        private distance: string,
+        private departureAirport: string,
+        private arrivalAirport: string,
+    ) { }
 
     getRouteID(): number {
         return this.routeID;
@@ -32,8 +33,12 @@ export class Route {
     setArrivalAirport(arrivalAirport: string): void {
         this.arrivalAirport = arrivalAirport;
     }
-
-    addSchedule(schedule: Schedule): void {
+    addSchedule(schedule: DateTime): void {
         this.schedules.push(schedule);
     }
+
+
 }
+
+
+

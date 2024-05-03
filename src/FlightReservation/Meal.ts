@@ -1,40 +1,74 @@
-
-import { TypeFood } from "../enums/TypeFood";
+import { TypeFood } from "../Enums/TypeFood";
 
 export class Meal {
-    private quantityFood: number;
-    private quantityOfMeal: { [key in TypeFood]: number } = {
-        [TypeFood.VEGETERAIN]: 0,
-        [TypeFood.VEGAN]: 0,
-        [TypeFood.GLUTENFREE]: 0,
-        [TypeFood.OTHER]: 0
-    };
+    private mealNumber: number;
+    private foodName: string;
+    private static allMeals: Meal[] = [];
+    private quantityMeal: number = 0;
+    private mealType: TypeFood;
+    private mealPrice: number = 0;
 
-    constructor(quantityFood: number) {
-        this.quantityFood = quantityFood;
+    constructor(mealNumber: number, foodName: string, mealType: TypeFood) {
+        this.mealNumber = mealNumber;
+        this.foodName = foodName;
+        this.mealType = mealType;
+        Meal.allMeals.push(this);
+        this.calculateMealPrice();
     }
 
-    getQuantityFood() {
-        return this.quantityFood;
+    static getAllMeals(): Meal[] {
+        return Meal.allMeals;
     }
 
-    setQuantityFood(quantity: number) {
-        this.quantityFood = quantity;
+    getMealNumber(): number {
+        return this.mealNumber;
     }
 
-    getQuantityOfMeal(typeFood: TypeFood) {
-        return this.quantityOfMeal[typeFood];
+    getFoodName(): string {
+        return this.foodName;
     }
 
-    setQuantityOfMeal(typeFood: TypeFood, quantity: number) {
-        this.quantityOfMeal[typeFood] = quantity;
+    addQuantity(quantity: number): void {
+        this.quantityMeal += quantity;
+        this.calculateMealPrice();
     }
+
+    getQuantity(): number {
+        return this.quantityMeal;
+    }
+
+    getPrice(): number {
+        return this.mealPrice;
+    }
+
+    private calculateMealPrice(): void {
+        if (this.quantityMeal === 0 || this.quantityMeal ===1) {
+            // If quantity is zero, set price to base price
+            if (this.mealType === TypeFood.GLUTENFREE) {
+                this.mealPrice = 100;
+            } else if (this.mealType === TypeFood.VEGAN) {
+                this.mealPrice = 200;
+            } else if (this.mealType === TypeFood.VEGETERAIN) {
+                this.mealPrice = 300;
+            } else if (this.mealType === TypeFood.OTHER) {
+                this.mealPrice = 400;
+            } else {
+                throw new Error("Unsupported meal type");
+            }
+        } else {
+            // If quantity is not zero, calculate price based on base price and quantity
+            if (this.mealType === TypeFood.GLUTENFREE) {
+                this.mealPrice = 100 * this.quantityMeal;
+            } else if (this.mealType === TypeFood.VEGAN) {
+                this.mealPrice = 200 * this.quantityMeal;
+            } else if (this.mealType === TypeFood.VEGETERAIN) {
+                this.mealPrice = 300 * this.quantityMeal;
+            } else if (this.mealType === TypeFood.OTHER) {
+                this.mealPrice = 400 * this.quantityMeal;
+            } else {
+                throw new Error("Unsupported meal type");
+            }
+        }
+    }
+    
 }
-
-const meal = new Meal(120);
-meal.setQuantityOfMeal(TypeFood.VEGETERAIN, 15);
-meal.setQuantityOfMeal(TypeFood.VEGAN, 20);
-meal.setQuantityOfMeal(TypeFood.GLUTENFREE, 35);
-meal.setQuantityOfMeal(TypeFood.OTHER, 30);
-
-// console.log(meal);

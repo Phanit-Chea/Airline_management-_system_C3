@@ -2,7 +2,9 @@ import { AirCraft } from "./AirCraft";
 import { Airport } from "./Airport";
 
 export class Airline{
-    constructor(private name:string,private code:string,private airCraft:AirCraft,private airPorts:Airport){
+    private airCraft:AirCraft[]=[];
+    private airPorts:Airport[]=[];
+    constructor(private name:string,private code:string){
         this.name =name;
         this.code =code;
     }
@@ -11,6 +13,12 @@ export class Airline{
     }
     getCode(){
        return this.code;
+    }
+    addAirport(airport:Airport):void{
+        this.airPorts.push(airport);
+    }
+    addAircraft(aircraft:AirCraft):void{
+        this.airCraft.push(aircraft)
     }
 }
 

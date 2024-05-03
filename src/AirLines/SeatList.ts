@@ -1,7 +1,6 @@
 import { ClassSeat } from "../Enums/ClassSeat";
 
-
-export class Seats {
+export class SeatList {
     private capacityOfSeats: number;
     private seatTypeCount: { [key in ClassSeat]: number } = {
         [ClassSeat.FIRSTCLASS]: 20,
@@ -11,8 +10,9 @@ export class Seats {
         [ClassSeat.EMERGENCYEXIT]: 20,
     };
 
-    constructor(capacityOfSeats: number) {
-        this.capacityOfSeats = capacityOfSeats;
+    constructor(capacity:number) {
+        this.capacityOfSeats = capacity;
+        
     }
 
     setSeatTypeCount(seatType: ClassSeat, count: number): void {
@@ -28,7 +28,7 @@ export class Seats {
     }
 }
 
-// Example usage
-let seats = new Seats(150);
-// console.log(seats.getSeatTypeCount());
+
+let seats = new SeatList(150);
+
 

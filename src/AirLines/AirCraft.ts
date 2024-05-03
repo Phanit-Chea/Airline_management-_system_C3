@@ -1,4 +1,8 @@
+import { DateTime } from "../Person/DateTime";
+import { Route } from "../Routes/Route";
 import { Flight } from "./Flight";
+import { SeatList } from "./SeatList";
+
 export class AirCraft {
     getPilots() {
          throw new Error("Method not implemented.");
@@ -7,6 +11,7 @@ export class AirCraft {
          throw new Error("Method not implemented.");
     }
     private flights: Flight[];
+    public seats: SeatList | undefined;
 
     constructor(private name: string, private model: string, ) {
         this.name = name;
@@ -25,8 +30,11 @@ export class AirCraft {
     addFlight(flight: Flight): void {
         this.flights.push(flight);
     }
-
-    
+    addSeats(seats: SeatList): void {
+        this.seats = seats;
+    }
 }
+
+
 
 
