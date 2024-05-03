@@ -1,6 +1,9 @@
 import { TypeFood } from "../enums/TypeFood";
 
 export class Meal {
+    setQuantityOfMeal(GLUTENFREE: TypeFood, arg1: number) {
+        throw new Error("Method not implemented.");
+    }
     private mealNumber: number;
     private foodName: string;
     private static allMeals: Meal[] = [];
