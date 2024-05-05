@@ -4,7 +4,7 @@ import { Chef } from "../FlightReservation/Chef";
 import { Ticket } from "../enums/Ticket";
 
 export class Flight {
-    public seats: Seat[] = [];
+    // public seats: Seat[] = [];
     public ruotes: Route[] = [];
     private static allFlights: Flight[] = [];
     private isReturn: Ticket;

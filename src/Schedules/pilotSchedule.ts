@@ -41,4 +41,12 @@ export class PilotSchedule {
     getAircraft(): AirCraft | null {
         return this.aircraft;
     }
+    getJoinedSchedules(pilot: CrewMember): Flight[] {
+        const joinedFlights: Flight[] = [];
+        if (this.pilots.includes(pilot) && this.flight) {
+            joinedFlights.push(this.flight);
+        }
+        return joinedFlights;
+    }
+    
 }

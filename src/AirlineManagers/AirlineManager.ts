@@ -1,8 +1,8 @@
 import { AirCraft } from "../AirLines/AirCraft";
 import { Airport } from "../AirLines/Airport";
 import { Flight } from "../AirLines/Flight";
-import { CrewType } from "../Enums/CrewType";
-import { Gender } from "../Enums/Gender";
+import { CrewType } from "../enums/CrewType";
+import { Gender } from "../enums/Gender";
 import { Chef } from "../FlightReservation/Chef";
 import { Meal } from "../FlightReservation/Meal";
 import { Address } from "../Person/Address";
@@ -64,7 +64,7 @@ export class Manager {
 // Create instances of Flight, AirCraft, Airport, and CrewMember
 const flight1 = new Flight(1,"123","323",2,Ticket.RETURN);
 const airCraft1 = new AirCraft("KVN", "Booing-202");
-const airport1 = new Airport("Airport Name", "Airport Code", new Address("123", "PP", "SR"), flight1);
+const airport1 = new Airport("Airport Name", "Airport Code", new Address("123", "PP", "SR"));
 const crewMember1 = new CrewMember("Jena", "leetiza", "jena@gmail.com", "012-222-333", new DateTime(2002, "April", 9), Gender.MALE, CrewType.PILOT, new Address("123", "PP", "SR"));
 
 // Create a Manager instance

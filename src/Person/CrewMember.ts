@@ -24,31 +24,6 @@ export class CrewMember extends Person {
     
 }
 
-const address = new Address("371", "pp", "pp", "pp");
-let date_of_birth = new DateTime(2002, "April", 9);
 
-// Create an instance of CrewMember
-const Pilot = new CrewMember(
-    "John",                 // first_name
-    "Doe",                  // last_name
-    "john@gmail.com",       // email
-    "0976715667",           // phone
-    date_of_birth,          // date_of_birth
-    Gender.MALE,            // gender
-    CrewType.PILOT,         // role
-    address                 // address
-);
-const Pilot1 = new CrewMember(
-    "John",                 // first_name
-    "Doe",                  // last_name
-    "john@gmail.com",       // email
-    "0976715667",           // phone
-    date_of_birth,          // date_of_birth
-    Gender.MALE,            // gender
-    CrewType.PILOT,         // role
-    address                 // address
-);
-
-// console.log(Pilot)
 
 

@@ -2,7 +2,7 @@ import { CrewMember } from "../Person/CrewMember";
 import { DateTime } from "../Person/DateTime";
 
 export class Schedule {
-    private crewMembers: CrewMember[] = [];
+    // private crewMembers: CrewMember[] = [];
 
     constructor(private date: DateTime) {}
 
